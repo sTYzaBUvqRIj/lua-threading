@@ -46,7 +46,7 @@ int l_t_pass(lua_State* l)
 void l_exec(lua_State* l, std::string content)
 {
 	l = lua_newthread(l);
-	if (luaL_dostring(l, content.c_str())) std::cout << luaL_checkstring(l, -1) << std::endl;
+	if (luaL_dostring(l, content.c_str())) printf("%s\n", luaL_checkstring(l, -1));
 }
 
 void l_exec_thread(lua_State* l, std::string id)
@@ -54,7 +54,7 @@ void l_exec_thread(lua_State* l, std::string id)
 	l = lua_newthread(l);
 	if (lua_getglobal(l, "thread_run") == LUA_TFUNCTION) {
 		lua_pushstring(l, id.c_str());
-		if (lua_pcall(l, 1, 0, 0)) std::cout << luaL_checkstring(l, -1) << std::endl;
+		if (lua_pcall(l, 1, 0, 0)) printf("%s\n", luaL_checkstring(l, -1));
 	}
 }
 
