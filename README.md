@@ -1,2 +1,2 @@
 # lua-threading
-Lua API: thread
+lua API: thread
